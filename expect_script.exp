@@ -1,0 +1,11 @@
+#!/usr/bin/expect
+
+set timeout -1
+spawn ./boot.sh
+expect "login: "
+send -- "root\n"
+set password [exec cat root-pass.txt]
+expect "Password: "
+send -- "$password\n"
+expect "root@bustervm:~#"
+
